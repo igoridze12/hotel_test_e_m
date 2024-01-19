@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_test_e_m/data/api/booking/booking_feature_api.dart';
+import 'package:hotel_test_e_m/data/api/core/core_dio_factory.dart';
 
-void main() {
+void main() async {
+  final hotelApi = BookingFeatureApi(DefaultCoreDioFactory());
+  final resp = await hotelApi.getHotelInfo();
+  print(resp.address ?? 'empty');
   runApp(const MainApp());
 }
 
