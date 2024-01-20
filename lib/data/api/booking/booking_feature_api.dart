@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:hotel_test_e_m/data/api/core/core_dio_factory.dart';
+import 'package:hotel_test_e_m/data/models/response/booking/booking_info_response.dart';
 import 'package:hotel_test_e_m/data/models/response/hotel/hotel_info_response.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -22,6 +23,11 @@ abstract class BookingFeatureApi {
 
   @GET(_getHotelInfoUrl)
   Future<HotelInfoResponse> getHotelInfo({
+    @CancelRequest() CancelToken? cancelToken,
+  });
+
+  @GET(_getBookingInfoUrl)
+  Future<BookingInfoResponse> getBookingInfo({
     @CancelRequest() CancelToken? cancelToken,
   });
 }

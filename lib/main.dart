@@ -6,6 +6,8 @@ void main() async {
   final hotelApi = BookingFeatureApi(DefaultCoreDioFactory());
   final resp = await hotelApi.getHotelInfo();
   print(resp.address ?? 'empty');
+  final resp1 = await hotelApi.getBookingInfo();
+  print(resp1.tourDateStart ?? DateTime.now());
   runApp(const MainApp());
 }
 
