@@ -48,6 +48,35 @@ class _BookingFeatureApi implements BookingFeatureApi {
   }
 
   @override
+  Future<RoomsInfoResponse> getRoomInfo({CancelToken? cancelToken}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<RoomsInfoResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/157ea342-a8a3-4e00-a8e6-a87d170aa0a2',
+              queryParameters: queryParameters,
+              data: _data,
+              cancelToken: cancelToken,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = RoomsInfoResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<BookingInfoResponse> getBookingInfo({CancelToken? cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

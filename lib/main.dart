@@ -8,7 +8,10 @@ void main() async {
   print(resp.address ?? 'empty');
   final resp1 = await hotelApi.getBookingInfo();
   print(resp1.tourDateStart ?? DateTime.now());
+  final resp2 = await hotelApi.getRoomInfo();
+  print(resp2.rooms?[1].name);
   runApp(const MainApp());
+  
 }
 
 class MainApp extends StatelessWidget {
