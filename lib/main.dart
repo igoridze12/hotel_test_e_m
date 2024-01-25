@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_test_e_m/data/api/booking/booking_feature_api.dart';
-import 'package:hotel_test_e_m/data/api/core/core_dio_factory.dart';
+import 'package:hotel_test_e_m/di/app/app_providers.dart';
+import 'package:hotel_test_e_m/di/hotel/hotel_providers.dart';
+import 'package:hotel_test_e_m/presentation/pages/hotel/hotel_info_page.dart';
+import 'package:hotel_test_e_m/presentation/theme/default_colors.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
-  final hotelApi = BookingFeatureApi(DefaultCoreDioFactory());
-  final resp = await hotelApi.getHotelInfo();
-  print(resp.address ?? 'empty');
-  final resp1 = await hotelApi.getBookingInfo();
-  print(resp1.tourDateStart ?? DateTime.now());
-  final resp2 = await hotelApi.getRoomInfo();
-  print(resp2.rooms?[1].name);
-  runApp(const MainApp());
-  
+  runApp(
+    MultiProvider(
+      providers: [...appProviders],
+      child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {
@@ -19,11 +19,11 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+    return MaterialApp(
+      theme: ThemeData(scaffoldBackgroundColor: DefaultColors.textGrey),
+      home: MultiProvider(
+        providers: [...hotelProviders],
+        child: const HotelInfoPage(),
       ),
     );
   }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'booking_feature_api.dart';
+part of 'booking_api.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'booking_feature_api.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _BookingFeatureApi implements BookingFeatureApi {
-  _BookingFeatureApi(
+class _BookingApi implements BookingApi {
+  _BookingApi(
     this._dio, {
     this.baseUrl,
   });
